@@ -108,7 +108,16 @@ app.get('/api/pages/all', async (req, res) => {
 //  success response: {status:'ok', tags: ['tagName', 'otherTagName']}
 //  failure response: no failure response
 app.get('/api/tags/all', async (req, res) => {
+  const fileName = await readDir(DATA_DIR);
+  let pages = fileName.map((page) => {
+    return path.parse(page).name;
+  });
+  pages.forEach((tag) => {
+    return tag.match(TAG_RE);
+  });
 
+  pages.push('default');
+  res.json({ status: 'ok', tags: pages });
 });
 
 

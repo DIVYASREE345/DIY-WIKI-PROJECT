@@ -3,8 +3,8 @@
 This is your own wik
 This ishow you change stuff!!
 
-Here's the [test](test) page.
+Here's the [Divya](Divya) page.
 
 To create a new file, just link to it and follow the link: [badging](badging)
 
-#home #default
+#home #default #Divya
