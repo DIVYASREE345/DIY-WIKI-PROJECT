@@ -85,9 +85,21 @@ app.post('/api/page/:slug', async (req, res) => {
 //  success response: {status:'ok', pages: ['fileName', 'otherFileName']}
 //  failure response: no failure response
 app.get('/api/pages/all', async (req, res) => {
+  const fileName = await readDir(DATA_DIR);
 
+  try {
+    const page = fileName.map((file) => {
+      return path.parse(file).name;
+    });
+    res.json({
+      pages: page,
+      status: 'ok',
+    });
+  } catch {
+    res.json({ status: 'error' });
+  }
+  // console.log('working');
 });
-
 
 // GET: '/api/tags/all'
 // sends an array of all tag names in all files, without duplicates!
